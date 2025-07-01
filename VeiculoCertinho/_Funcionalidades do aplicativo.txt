@@ -1,0 +1,174 @@
+O aplicativo oferece as seguintes funcionalidades personalizadas por veículo (carro, moto, caminhão, ônibus e etc...), organizadas por módulos:
+
+1. Abastecimentos
+Registro de Abastecimentos:
+
+Tipos de combustível: gasolina, etanol, diesel, GNV, recarga elétrica, AdBlue/Arla 32, hidrogênio.
+
+Campos: data, preço por litro/m3/kWh/kg, quantidade abastecida, quilometragem atual, posto utilizado.
+
+Cálculo de Consumo:
+
+Relatório de km/l, km/m3 (para GNV), km/kWh (para elétricos) e km/kg (para hidrogênio).
+
+Comparação entre combustíveis mais vantajosos (ex: gasolina vs. etanol vs GNV) Dependerá do tipo de combustível que o carro aceita.
+
+Integração com APIs:
+
+Preços atualizados de combustíveis (ex: ANP, Postos BR).
+
+Sugestões de postos mais econômicos próximos.
+
+2. Manutenções Preventivas
+Agendamento Automático:
+
+Lembretes baseados em tempo (ex: troca de óleo a cada 6 meses) ou quilometragem (ex: alinhamento a cada 10.000 km) o que ocorrer primeiro.
+
+Checklist personalizado por veículo (carro, moto, caminhão, ônibus).
+
+Submódulos Especializados:
+
+Sistema de Freios: Registro de troca de pastilhas, discos, sangria do sistema.
+
+Sistema de Transmissão: Controle de óleo do câmbio, embreagem, fluido de direção hidráulica.
+
+Suspensão e Direção: Acompanhamento de amortecedores, alinhamento, balanceamento.
+
+Sistema Elétrico: Verificação de bateria, alternador, cabos de vela e vela.
+
+Histórico Detalhado:
+
+Visualização cronológica de todas as manutenções realizadas.
+
+Anexo de fotos/comprovantes (ex: nota fiscal da troca de óleo).
+
+3. Manutenções Corretivas
+Registro de Reparos:
+
+Descrição do problema (ex: "vazamento de óleo no motor").
+
+Custo do serviço, data, quilometragem e local de reparo.
+
+Análise de Padrões:
+
+Identificação de componentes com falhas recorrentes (ex: "pastilhas de freio gastas rapidamente").
+
+Sugestões para evitar problemas futuros.
+
+4. Serviços Estéticos e de Conservação
+Controle de Serviços:
+
+Lavagem, polimento, cristalização, higienização interna.
+
+Registro de custos e datas.
+
+Alertas Personalizados:
+
+Lembretes para renovar película de proteção ou fazer polimento anual.
+
+5. Documentação e Serviços Legais
+Gestão de Documentos:
+
+Vencimento de IPVA, seguro, licenciamento, multas.
+
+Notificações push para evitar esquecimentos.
+
+Integração com Órgãos Oficiais:
+
+Consulta automática de multas (ex: integração com Detran).
+
+Download de CRLV-e digital.
+
+6. Veículos Específicos
+Elétricos/Híbridos:
+
+Monitoramento de baterias de alta tensão.
+
+Calendário de atualizações de software.
+
+Veículos Pesados (Caminhões/Ônibus):
+
+Controle de sistema pneumático, freio-motor, tacógrafo.
+
+Motocicletas:
+
+Acompanhamento de corrente de transmissão, relação (coroa/pinhão), cabos de embreagem.
+
+7. Personalização e Acessórios
+Registro de Instalações:
+
+Som, alarme, faróis de LED, engate de reboque.
+
+Custo e data de instalação.
+
+Recomendações:
+
+Sugestões de acessórios com base no tipo de veículo e uso.
+
+8. Dashboard Inteligente
+Visão Geral:
+
+Gráficos de custos mensais (abastecimento x manutenção x serviços).
+
+Quilometragem média por tipo de combustível.
+
+Indicadores de Saúde do Veículo:
+
+Status de componentes críticos (ex: freios em 80% de vida útil).
+
+Comparativo com a média de outros usuários.
+
+9. Relatórios e Exportação
+Gerar Relatórios:
+
+PDF para seguro, revenda ou garantia.
+
+Histórico completo de serviços e custos.
+
+Exportação de Dados:
+
+Planilhas CSV/Excel para análise externa.
+
+10. Segurança e Multi-Veículo
+Perfis de Usuário:
+
+Acesso seguro com autenticação de dois fatores.
+
+Compartilhamento controlado (ex: família ou oficina).
+
+Suporte a Múltiplos Veículos:
+
+Adição de carros, motos, caminhões em uma única conta.
+
+11. Integrações Externas
+APIs Úteis:
+
+Previsão do tempo para planejar lavagens.
+
+Mapas para registro de rotas (ex: viagens longas).
+
+Notificações:
+
+Push, e-mail ou SMS para alertas críticos (ex: "IPVA vence em 7 dias!").
+
+Tecnologias e Princípios
+
+Backend: .NET 9 (C#).
+
+Frontend: Aplicativo .NET MAUI (mobile e Desktop).
+
+Banco de Dados: Que tenha o modo de uso gratuito.
+
+Segurança: JWT, HTTPS, encriptação de dados sensíveis.
+
+Cloud: AWS/Azure para armazenamento e backups.
+
+SOLID e Clean Architecture:
+
+Separação clara entre regras de negócio, interface e infraestrutura.
+
+Facilidade para adicionar novos recursos (ex: suporte a hidrogênio).
+
+Escalabilidade:
+
+Pronto para integração com IoT (ex: sensores de pressão de pneus).

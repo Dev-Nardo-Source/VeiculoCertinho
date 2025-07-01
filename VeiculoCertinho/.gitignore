@@ -1,0 +1,23 @@
+# Ignorar pastas de build
+VeiculoCertinho\bin
+VeiculoCertinho\obj
+
+# Ignorar arquivos de banco de dados SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# Ignorar arquivos de cobertura de teste
+coverage.cobertura.xml
+coverage-report/
+generate-coverage-report.ps1
+
+# Ignorar pastas e arquivos do Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+/VeiculoCertinho/bin/Debug/net9.0-windows10.0.19041.0/win10-x64/VeiculoCertinho.dll
+/VeiculoCertinho/bin/Debug/net9.0-windows10.0.19041.0/win10-x64/VeiculoCertinho.exe
+/VeiculoCertinho/bin/Debug/net9.0-windows10.0.19041.0/win10-x64/VeiculoCertinho.pdb

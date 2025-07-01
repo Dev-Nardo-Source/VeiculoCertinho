@@ -1,0 +1,167 @@
+# Lista Completa de Manutenções, Serviços e Abastecimentos de Veículos
+
+## Abastecimentos
+- Combustível comum (gasolina, etanol, diesel)
+- Combustível premium/aditivado
+- GNV (Gás Natural Veicular)
+- Recarga elétrica (para veículos elétricos)
+- AdBlue/Arla 32 (para veículos diesel)
+- Hidrogênio (para veículos a célula de combustível)
+
+## Manutenções Preventivas
+### Manutenções Básicas
+- Troca de óleo do motor
+- Troca do filtro de óleo
+- Troca do filtro de ar
+- Troca do filtro de combustível
+- Troca do filtro de ar-condicionado/filtro de cabine
+- Troca do filtro do ar-condicionado
+- Verificação/troca do líquido de arrefecimento (água do radiador)
+- Verificação/troca do líquido de freio
+- Verificação/troca do fluido de transmissão
+- Verificação/troca do óleo de direção hidráulica
+- Verificação/completar água do limpador de para-brisa
+- Lubrificação de portas, janelas e fechaduras
+- Limpeza do sistema de injeção
+
+### Sistema de Ignição e Elétrico
+- Verificação/troca das velas de ignição
+- Verificação/troca dos cabos de vela
+- Verificação/troca da bobina de ignição
+- Verificação/troca da bateria
+- Verificação do alternador e motor de arranque
+- Verificação do sistema elétrico geral
+- Recalibração da central eletrônica
+
+### Sistema de Freios
+- Verificação/troca das pastilhas de freio
+- Verificação/troca dos discos de freio
+- Verificação/troca das lonas de freio
+- Verificação/troca dos tambores de freio
+- Sangria do sistema de freios
+- Regulagem do freio de estacionamento
+
+### Sistema de Suspensão e Direção
+- Verificação/troca dos amortecedores
+- Verificação/troca das molas
+- Verificação/troca das buchas da suspensão
+- Verificação/troca das bandejas da suspensão
+- Verificação/troca dos pivôs/terminais de direção
+- Verificação/troca da barra estabilizadora
+- Verificação/troca dos rolamentos das rodas
+- Alinhamento das rodas
+- Balanceamento das rodas
+- Verificação/ajuste da geometria da suspensão
+- Verificação/troca da caixa de direção
+
+### Sistema de Transmissão
+- Verificação/troca do óleo da caixa de câmbio
+- Verificação/troca do óleo do diferencial
+- Verificação/troca do fluido da transmissão automática
+- Verificação/troca da embreagem (para veículos manuais)
+- Verificação/troca do volante bimassa (para veículos manuais)
+- Verificação/troca dos rolamentos do câmbio
+- Verificação/troca do conversor de torque (transmissão automática)
+- Verificação/troca dos semieixos e juntas homocinéticas
+
+### Sistema de Arrefecimento
+- Limpeza do radiador
+- Verificação/troca da bomba d'água
+- Verificação/troca da válvula termostática
+- Verificação/troca das mangueiras
+- Verificação/troca da correia da bomba d'água
+
+### Correias e Correntes
+- Verificação/troca da correia dentada/timing belt
+- Verificação/troca da corrente de distribuição
+- Verificação/troca das correias auxiliares
+- Verificação/troca dos tensionadores
+
+### Pneus
+- Rodízio de pneus
+- Calibragem dos pneus
+- Verificação/troca dos pneus
+- Verificação/troca da válvula dos pneus
+- Verificação do estepe
+
+## Manutenções Corretivas
+- Reparo do motor
+- Retífica do motor
+- Reparo da caixa de câmbio
+- Reparo do sistema de embreagem
+- Reparo do sistema de injeção eletrônica
+- Reparo do sistema de freio ABS
+- Reparo do sistema de direção assistida
+- Reparo do sistema de ar-condicionado
+- Reparo do sistema elétrico
+- Reparo da central eletrônica
+- Reparo de vazamentos
+- Reparo da bomba de combustível
+- Desamassamento de lataria
+- Reparo de componentes de suspensão
+- Reparo do sistema de escape
+- Reparo do catalisador
+- Reparo do turbo compressor
+
+## Serviços Estéticos e de Conservação
+- Lavagem simples
+- Lavagem completa
+- Polimento
+- Enceramento
+- Cristalização da pintura
+- Higienização interna
+- Limpeza de estofados
+- Impermeabilização de estofados
+- Lavagem do motor
+- Aplicação de película nos vidros
+- Aplicação de insulfilm
+- Polimento de faróis
+- Revitalização de plásticos e borrachas
+- Limpeza do ar-condicionado/higienização
+- Tratamento de manchas
+- Reparo de pequenos arranhões
+- Pintura
+
+## Serviços Legais e Documentação
+- Inspeção veicular (licenciamento)
+- Vistoria de GNV
+- Inspeção de emissão de poluentes
+- Renovação da CNH do proprietário
+- Pagamento de IPVA
+- Pagamento de seguros
+- Pagamento de multas
+
+## Personalização e Acessórios
+- Instalação de som/multimídia
+- Instalação de alarme/rastreador
+- Instalação de faróis de LED/xenon
+- Instalação de engate de reboque
+- Instalação de rack de teto
+- Colocação de acessórios internos
+- Alterações de performance
+- Instalação de kit GNV
+
+## Serviços para Veículos Elétricos e Híbridos
+- Verificação do sistema de carga
+- Verificação das baterias de alta tensão
+- Verificação do sistema de gerenciamento térmico
+- Atualização de software
+- Verificação dos inversores e conversores
+- Verificação dos motores elétricos
+- Recalibração dos sistemas regenerativos
+
+## Serviços para Veículos Pesados (Caminhões/Ônibus)
+- Verificação/troca do sistema pneumático
+- Verificação/troca das lonas de freio pneumático
+- Verificação do sistema de freio-motor
+- Verificação do tacógrafo
+- Verificação/troca de componentes da suspensão a ar
+- Verificação/manutenção do sistema hidráulico (para basculantes)
+- Verificação/manutenção dos eixos traseiros/diferenciais múltiplos
+
+## Serviços para Motocicletas
+- Verificação/troca da corrente de transmissão
+- Verificação/troca das coroas
+- Verificação/ajuste dos cabos de embreagem e acelerador
+- Verificação/troca de relação (coroa/pinhão)
+- Verificação/manutenção da suspensão específica

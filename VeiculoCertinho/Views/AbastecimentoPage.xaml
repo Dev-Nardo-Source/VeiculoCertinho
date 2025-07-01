@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:VeiculoCertinho.ViewModels"
+             xmlns:models="clr-namespace:VeiculoCertinho.Models"
+             x:Class="VeiculoCertinho.Views.AbastecimentoPage"
+             x:DataType="viewmodels:AbastecimentoViewModel"
+             Title="Abastecimentos">
+
+    <ContentPage.BindingContext>
+        <viewmodels:AbastecimentoViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10" Spacing="10">
+        <Label Text="Registro de Abastecimento" FontAttributes="Bold" FontSize="Medium" />
+
+        <Entry Text="{Binding TipoCombustivel}" Placeholder="Tipo de Combustível" />
+        <Entry Text="{Binding PrecoPorUnidade}" Placeholder="Preço por Unidade" Keyboard="Numeric" />
+        <Entry Text="{Binding Quantidade}" Placeholder="Quantidade Abastecida" Keyboard="Numeric" />
+        <Entry Text="{Binding QuilometragemAtual}" Placeholder="Quilometragem Atual" Keyboard="Numeric" />
+        <Entry Text="{Binding Posto}" Placeholder="Posto Utilizado" />
+
+        <Button Text="Registrar" Command="{Binding RegistrarCommand}" />
+
+        <Label Text="Relatório de Consumo" FontAttributes="Bold" FontSize="Medium" Margin="0,20,0,0" />
+
+        <Label Text="{Binding ConsumoMensagem}" />
+
+        <CollectionView ItemsSource="{Binding Abastecimentos}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Abastecimento">
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" 
+                               Text="{Binding Data, StringFormat='{0:dd/MM/yyyy}'}" />
+                        <Label Grid.Row="0" Grid.Column="1" 
+                               Text="{Binding TipoCombustivel}" />
+                        <Label Grid.Row="1" Grid.Column="0" 
+                               Text="{Binding Quantidade, StringFormat='Quantidade: {0:F2}'}" />
+                        <Label Grid.Row="1" Grid.Column="1" 
+                               Text="{Binding ValorTotal, StringFormat='Valor: R$ {0:F2}'}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

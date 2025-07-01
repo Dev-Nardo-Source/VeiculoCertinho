@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:VeiculoCertinho.ViewModels"
+             xmlns:models="clr-namespace:VeiculoCertinho.Models"
+             x:Class="VeiculoCertinho.Views.DashboardPage"
+             x:DataType="viewmodels:DashboardViewModel"
+             Title="Dashboard Inteligente">
+
+    <!--<ContentPage.BindingContext>
+        <viewmodels:DashboardViewModel />
+    </ContentPage.BindingContext>-->
+
+    <StackLayout Padding="10" Spacing="10">
+        <Label Text="Visão Geral do Veículo" FontAttributes="Bold" FontSize="Medium" />
+
+        <CollectionView ItemsSource="{Binding Indicadores}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:DashboardIndicador">
+                    <StackLayout Padding="5" Spacing="5" BackgroundColor="#EEE">
+                        <Label Text="{Binding NomeIndicador}" FontAttributes="Bold" />
+                        <Label Text="{Binding Valor}" />
+                        <Label Text="{Binding DataReferencia, StringFormat='Data: {0:dd/MM/yyyy}'}" />
+                        <Label Text="{Binding Descricao}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

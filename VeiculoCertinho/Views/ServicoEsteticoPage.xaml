@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:VeiculoCertinho.ViewModels"
+             xmlns:models="clr-namespace:VeiculoCertinho.Models"
+             x:Class="VeiculoCertinho.Views.ServicoEsteticoPage"
+             x:DataType="viewmodels:ServicoEsteticoViewModel"
+             Title="Serviços Estéticos">
+
+    <StackLayout Padding="10" Spacing="10">
+        <Label Text="Cadastro de Serviço Estético" FontAttributes="Bold" FontSize="Medium" />
+
+        <Entry x:Name="TipoServicoEntry" Placeholder="Tipo de Serviço" Text="{Binding NovoServico.TipoServico}" />
+        <DatePicker x:Name="DataServicoPicker" Date="{Binding NovoServico.DataServico}" />
+        <Entry x:Name="CustoEntry" Placeholder="Custo" Keyboard="Numeric" Text="{Binding NovoServico.Custo}" />
+        <Editor x:Name="ObservacoesEditor" Placeholder="Observações" HeightRequest="100" Text="{Binding NovoServico.Observacoes}" />
+
+        <Button Text="Registrar" Command="{Binding RegistrarCommand}" />
+
+        <Label Text="Histórico de Serviços" FontAttributes="Bold" FontSize="Medium" Margin="0,20,0,0" />
+
+        <CollectionView ItemsSource="{Binding Servicos}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:ServicoEstetico">
+                    <StackLayout Padding="5" Spacing="5" BackgroundColor="#EEE">
+                        <Label Text="{Binding TipoServico}" FontAttributes="Bold" />
+                        <Label Text="{Binding DataServico, StringFormat='Data Serviço: {0:dd/MM/yyyy}'}" />
+                        <Label Text="{Binding Custo, StringFormat='Custo: {0:C}'}" />
+                        <Label Text="{Binding Observacoes}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

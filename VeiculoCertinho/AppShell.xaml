@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="VeiculoCertinho.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:VeiculoCertinho"
+    Shell.FlyoutBehavior="Flyout"
+    Title="VeiculoCertinho">
+
+    <!-- Comentado temporariamente para desenvolvimento
+    <ShellContent
+        Title="Splash"
+        ContentTemplate="{DataTemplate local:Views.SplashPage}"
+        Route="SplashPage" />
+
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate local:Views.LoginPage}"
+        Route="LoginPage" />
+    -->
+
+    <Shell.FlyoutHeader>
+        <Grid HeightRequest="200">
+            <Image Aspect="AspectFill"
+                   Source="header_background.png"
+                   Opacity="0.6" />
+            <Label Text="Veículo Certinho"
+                   TextColor="White"
+                   FontSize="Title"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <ShellContent
+        Title="Dashboard Inteligente"
+        ContentTemplate="{DataTemplate local:Views.DashboardPage}"
+        Route="DashboardPage" />
+
+    <ShellContent
+        Title="Garagem"
+        ContentTemplate="{DataTemplate local:Views.GaragemPage}"
+        Route="GaragemPage" />
+
+    <ShellContent
+        Title="Cadastro de Veículo"
+        ContentTemplate="{DataTemplate local:Views.VeiculoPage}"
+        Route="VeiculoPage" />
+
+    <!-- Removido temporariamente para evitar erro de compilação
+    <ShellContent
+        Title="Excluir Veículo"
+        ContentTemplate="{DataTemplate local:Views.UserDeletePage}"
+        Route="ExcluirVeiculoPage" />
+    -->
+
+    <ShellContent
+        Title="Abastecimentos"
+        ContentTemplate="{DataTemplate local:Views.AbastecimentoPage}"
+        Route="AbastecimentoPage" />
+
+    <ShellContent
+        Title="Manutenções Preventivas"
+        ContentTemplate="{DataTemplate local:Views.ManutencaoPreventivaPage}"
+        Route="ManutencaoPreventivaPage" />
+
+    <ShellContent
+        Title="Manutenções Corretivas"
+        ContentTemplate="{DataTemplate local:Views.ManutencaoCorretivaPage}"
+        Route="ManutencaoCorretivaPage" />
+
+    <ShellContent
+        Title="Controle de Pneus"
+        ContentTemplate="{DataTemplate local:Views.ControlePneusPage}"
+        Route="ControlePneusPage" />
+
+    <ShellContent
+        Title="Serviços Estéticos"
+        ContentTemplate="{DataTemplate local:Views.ServicoEsteticoPage}"
+        Route="ServicoEsteticoPage" />
+
+    <ShellContent
+        Title="Documentação e Serviços Legais"
+        ContentTemplate="{DataTemplate local:Views.DocumentoPage}"
+        Route="DocumentoPage" />
+
+    <FlyoutItem Title="Usuários" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Listagem de Usuários"
+            ContentTemplate="{DataTemplate local:Views.ListaUsuariosPage}"
+            Route="ListaUsuariosPage" />
+        <ShellContent
+            Title="Cadastro de Usuário"
+            ContentTemplate="{DataTemplate local:Views.UserRegistrationPage}"
+            Route="UserRegistrationPage" />
+        <!-- Removido temporariamente para evitar erro de compilação
+        <ShellContent
+            Title="Editar Usuário"
+            ContentTemplate="{DataTemplate local:Views.UserEditPage}"
+            Route="UserEditPage" /> -->
+        <!-- Removido temporariamente para evitar erro de compilação
+        <ShellContent
+            Title="Excluir Usuário"
+            ContentTemplate="{DataTemplate local:Views.UserDeletePage}"
+            Route="UserDeletePage" />
+        -->
+    </FlyoutItem>
+
+    <ShellContent
+        Title="Relatórios e Exportação"
+        ContentTemplate="{DataTemplate local:Views.RelatorioPage}"
+        Route="RelatorioPage" />
+
+    <ShellContent
+        Title="Autenticação 2FA"
+        ContentTemplate="{DataTemplate local:Views.DoisFatoresPage}"
+        Route="DoisFatoresPage" />
+
+    <ShellContent
+        Title="Compartilhamento"
+        ContentTemplate="{DataTemplate local:Views.CompartilhamentoPage}"
+        Route="CompartilhamentoPage" />
+
+    <ShellContent
+        Title="Integração Órgãos Oficiais"
+        ContentTemplate="{DataTemplate local:Views.IntegracaoOrgaosPage}"
+        Route="IntegracaoOrgaosPage" />
+
+    <ShellContent
+        Title="Monitoramento Veículos Específicos"
+        ContentTemplate="{DataTemplate local:Views.VeiculoEspecificoPage}"
+        Route="VeiculoEspecificoPage" />
+</Shell>

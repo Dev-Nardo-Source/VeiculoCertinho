@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:VeiculoCertinho.ViewModels"
+             x:Class="VeiculoCertinho.Views.DoisFatoresPage"
+             Title="Autenticação 2FA">
+
+    <ContentPage.BindingContext>
+        <viewmodels:DoisFatoresViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="20" Spacing="15" VerticalOptions="Center">
+        <Label Text="Digite o código de autenticação" FontSize="20" HorizontalOptions="Center" />
+        <Entry x:Name="CodigoEntry" Placeholder="Código 2FA" Keyboard="Numeric" />
+        <Button Text="Validar Código" Clicked="OnValidarCodigoClicked" />
+        <Label x:Name="ResultadoLabel" TextColor="Red" HorizontalOptions="Center" />
+    </StackLayout>
+</ContentPage>

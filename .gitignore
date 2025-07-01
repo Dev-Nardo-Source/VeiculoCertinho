@@ -1,0 +1,22 @@
+# Ignorar pastas de build
+VeiculoCertinho/bin/
+VeiculoCertinho/obj/
+**/bin/
+**/obj/
+
+# Ignorar arquivos de banco de dados SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# Ignorar arquivos de cobertura de teste
+coverage.cobertura.xml
+coverage-report/
+generate-coverage-report.ps1
+
+# Ignorar pastas e arquivos do Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates

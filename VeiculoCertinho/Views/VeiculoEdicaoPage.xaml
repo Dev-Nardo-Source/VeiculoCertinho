@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:VeiculoCertinho.ViewModels"
+             xmlns:models="clr-namespace:VeiculoCertinho.Models"
+             xmlns:converters="clr-namespace:VeiculoCertinho.Converters"
+             x:Class="VeiculoCertinho.Views.VeiculoEdicaoPage"
+             x:DataType="viewmodels:VeiculoViewModel"
+             Title="Edição de Veículo">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:MultiBoolToEnabledConverter x:Key="MultiBoolToEnabledConverter" />
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout x:Name="EntradaDadosLayout" Padding="10" Spacing="10">
+
+            <Label Text="Chassi" />
+            <Entry x:Name="ChassiEntry" 
+                   Placeholder="Digite o chassi com 17 caracteres" 
+                   MaxLength="17"
+                   Text="{Binding Veiculo.Chassi, Mode=TwoWay}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Label Text="Placa" />
+            <Entry x:Name="PlacaEntry" 
+                   Placeholder="Digite a placa com 7 caracteres" 
+                   MaxLength="7"
+                   Text="{Binding Veiculo.Placa, Mode=TwoWay}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Frame Padding="10" Margin="0,10,0,10" CornerRadius="8" HasShadow="True">
+                <StackLayout Spacing="5">
+                    <Label Text="Combustíveis" FontAttributes="Bold" Margin="0,0,0,10" />
+                    <Label Text="Gasolina" />
+                    <Switch AutomationId="UsaGasolinaSwitch" IsToggled="{Binding UsaGasolina, Mode=TwoWay}" IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}" />
+
+                    <Label Text="Etanol" />
+                    <Switch AutomationId="UsaEtanolSwitch" IsToggled="{Binding UsaEtanol, Mode=TwoWay}" IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}" />
+
+                    <Label Text="GNV" />
+                    <Switch AutomationId="UsaGNVSwitch" IsToggled="{Binding UsaGNV, Mode=TwoWay}" IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}" />
+
+                    <Label Text="Recarga Elétrica" />
+                    <Switch AutomationId="UsaRecargaEletricaSwitch" IsToggled="{Binding UsaRecargaEletrica, Mode=TwoWay}" IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}" />
+
+                    <Label Text="Diesel" />
+                    <Switch AutomationId="UsaDieselSwitch" IsToggled="{Binding UsaDiesel, Mode=TwoWay}" IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}" />
+
+                    <Label Text="Hidrogênio" />
+                    <Switch AutomationId="UsaHidrogenioSwitch" IsToggled="{Binding UsaHidrogenio, Mode=TwoWay}" IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}" />
+                </StackLayout>
+            </Frame>
+
+            <Label Text="Marca" />
+            <Entry x:Name="MarcaEntry" 
+                   Placeholder="Marca" 
+                   Text="{Binding Veiculo.Marca}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Label Text="Modelo" />
+            <Entry x:Name="ModeloEntry" 
+                   Placeholder="Modelo" 
+                   Text="{Binding Veiculo.Modelo}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Label Text="Ano" />
+            <Entry x:Name="AnoEntry" 
+                   Placeholder="Ano" 
+                   Keyboard="Numeric" 
+                   Text="{Binding Veiculo.Ano}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Label Text="Ano Modelo" />
+            <Entry x:Name="AnoModeloEntry" 
+                   Placeholder="Ano Modelo" 
+                   Keyboard="Numeric" 
+                   Text="{Binding Veiculo.AnoModelo}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Label Text="Cor" />
+            <Entry x:Name="CorEntry" 
+                   Placeholder="Cor" 
+                   Text="{Binding Veiculo.Cor}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Label Text="Motor" />
+            <Entry x:Name="MotorEntry" 
+                   Placeholder="Motor" 
+                   Text="{Binding Veiculo.Motor}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Label Text="Cilindrada" />
+            <Entry x:Name="CilindradaEntry" 
+                   Placeholder="Cilindrada" 
+                   Text="{Binding Veiculo.Cilindrada}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Label Text="Potência" />
+            <Entry x:Name="PotenciaEntry" 
+                   Placeholder="Potência" 
+                   Text="{Binding Veiculo.Potencia}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Label Text="Importado" />
+            <Switch x:Name="ImportadoSwitch" 
+                    IsToggled="{Binding Veiculo.Importado}">
+                <Switch.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Switch.IsEnabled>
+            </Switch>
+
+            <Label Text="UF de Origem" />
+            <Entry x:Name="UfEntry" 
+                   Placeholder="UF de Origem" 
+                   Text="{Binding Veiculo.Uf, Mode=TwoWay}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Label Text="Município de Origem" />
+            <Entry x:Name="MunicipioEntry" 
+                   Placeholder="Município de Origem" 
+                   Text="{Binding Veiculo.Municipio, Mode=TwoWay}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Label Text="Segmento" />
+            <Entry x:Name="SegmentoEntry" 
+                   Placeholder="Segmento" 
+                   Text="{Binding Veiculo.Segmento}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Label Text="Espécie do Veículo" />
+            <Entry x:Name="EspecieVeiculoEntry" 
+                   Placeholder="Espécie do Veículo" 
+                   Text="{Binding Veiculo.EspecieVeiculo}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Label Text="Passageiros" />
+            <Entry x:Name="PassageirosEntry" 
+                   Placeholder="Passageiros" 
+                   Keyboard="Numeric" 
+                   Text="{Binding Veiculo.Passageiros}">
+                <Entry.IsEnabled>
+                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                        <Binding Path="IsLoading" />
+                        <Binding Path="PreenchidoAutomaticamente" />
+                    </MultiBinding>
+                </Entry.IsEnabled>
+            </Entry>
+
+            <Editor x:Name="ObservacoesEditor" 
+                    Placeholder="Observações" 
+                    Text="{Binding Veiculo.Observacoes}"
+                    IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}" />
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+                <Button x:Name="SalvarButton" 
+                        Text="Salvar" />
+                <Button x:Name="CancelarButton" 
+                        Text="Cancelar" 
+                        IsVisible="True" />
+            </StackLayout>
+
+            <ActivityIndicator x:Name="LoadingIndicator" 
+                               IsVisible="{Binding IsLoading}" 
+                               IsRunning="{Binding IsLoading}" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

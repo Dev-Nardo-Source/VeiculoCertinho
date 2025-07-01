@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:VeiculoCertinho.ViewModels"
+             xmlns:models="clr-namespace:VeiculoCertinho.Models"
+             x:Class="VeiculoCertinho.Views.ControlePneusPage"
+             x:DataType="viewmodels:ControlePneusViewModel"
+             Title="Controle de Pneus">
+
+    <!--<ContentPage.BindingContext>
+        <viewmodels:ControlePneusViewModel />
+    </ContentPage.BindingContext>-->
+
+    <StackLayout Padding="10" Spacing="10">
+        <Label Text="Cadastro de Pneus" FontAttributes="Bold" FontSize="Medium" />
+
+        <Entry x:Name="PosicaoEntry" Placeholder="Posição do Pneu" Text="{Binding NovoPneu.Posicao}" />
+        <DatePicker x:Name="DataInstalacaoPicker" Date="{Binding NovoPneu.DataInstalacao}" />
+        <Entry x:Name="QuilometragemInstalacaoEntry" Placeholder="Quilometragem de Instalação" Keyboard="Numeric" Text="{Binding NovoPneu.QuilometragemInstalacao}" />
+        <Editor x:Name="ObservacoesEditor" Placeholder="Observações" HeightRequest="100" Text="{Binding NovoPneu.Observacoes}" />
+
+        <Button Text="Registrar" Command="{Binding RegistrarCommand}" />
+
+        <Label Text="Histórico de Pneus" FontAttributes="Bold" FontSize="Medium" Margin="0,20,0,0" />
+
+        <CollectionView ItemsSource="{Binding Pneus}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Pneu">
+                    <StackLayout Padding="5" Spacing="5" BackgroundColor="#EEE">
+                        <Label Text="{Binding Posicao}" FontAttributes="Bold" />
+                        <Label Text="{Binding DataInstalacao, StringFormat='Data Instalação: {0:dd/MM/yyyy}'}" />
+                        <Label Text="{Binding QuilometragemInstalacao, StringFormat='Quilometragem: {0} km'}" />
+                        <Label Text="{Binding Observacoes}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

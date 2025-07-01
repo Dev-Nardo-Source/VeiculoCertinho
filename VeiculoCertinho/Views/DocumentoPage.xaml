@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:VeiculoCertinho.ViewModels"
+             xmlns:models="clr-namespace:VeiculoCertinho.Models"
+             x:Class="VeiculoCertinho.Views.DocumentoPage"
+             x:DataType="viewmodels:DocumentoViewModel"
+             Title="Documentação e Serviços Legais">
+
+    <StackLayout Padding="10" Spacing="10">
+        <Label Text="Cadastro de Documentos" FontAttributes="Bold" FontSize="Medium" />
+
+        <Entry x:Name="TipoDocumentoEntry" Placeholder="Tipo de Documento" Text="{Binding NovoDocumento.TipoDocumento}" />
+        <DatePicker x:Name="DataVencimentoPicker" Date="{Binding NovoDocumento.DataVencimento}" />
+        <Switch x:Name="NotificadoSwitch" IsToggled="{Binding NovoDocumento.Notificado}" />
+        <Editor x:Name="ObservacoesEditor" Placeholder="Observações" HeightRequest="100" Text="{Binding NovoDocumento.Observacoes}" />
+
+        <Button Text="Registrar" Command="{Binding RegistrarCommand}" />
+
+        <Label Text="Documentos Cadastrados" FontAttributes="Bold" FontSize="Medium" Margin="0,20,0,0" />
+
+        <CollectionView ItemsSource="{Binding Documentos}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Documento">
+                    <StackLayout Padding="5" Spacing="5" BackgroundColor="#EEE">
+                        <Label Text="{Binding TipoDocumento}" FontAttributes="Bold" />
+                        <Label Text="{Binding DataVencimento, StringFormat='Data Vencimento: {0:dd/MM/yyyy}'}" />
+                        <Label Text="{Binding Notificado, StringFormat='Notificado: {0}'}" />
+                        <Label Text="{Binding Observacoes}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:VeiculoCertinho.ViewModels"
+             xmlns:models="clr-namespace:VeiculoCertinho.Models"
+             x:Class="VeiculoCertinho.Views.ManutencaoCorretivaPage"
+             x:DataType="viewmodels:ManutencaoCorretivaViewModel"
+             Title="Manutenções Corretivas">
+
+    <StackLayout Padding="10" Spacing="10">
+        <Label Text="Registro de Manutenção Corretiva" FontAttributes="Bold" FontSize="Medium" />
+
+        <Editor x:Name="DescricaoFalhaEditor" Placeholder="Descrição da Falha" HeightRequest="100" Text="{Binding NovaManutencao.DescricaoFalha}" />
+        <Editor x:Name="SolucaoAplicadaEditor" Placeholder="Solução Aplicada" HeightRequest="100" Text="{Binding NovaManutencao.SolucaoAplicada}" />
+        <Editor x:Name="ObservacoesEditor" Placeholder="Observações" HeightRequest="100" Text="{Binding NovaManutencao.Observacoes}" />
+
+        <Button Text="Registrar" Command="{Binding RegistrarCommand}" />
+
+        <Label Text="Histórico de Manutenções" FontAttributes="Bold" FontSize="Medium" Margin="0,20,0,0" />
+
+        <CollectionView ItemsSource="{Binding Manutencoes}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:ManutencaoCorretiva">
+                    <StackLayout Padding="5" Spacing="5" BackgroundColor="#EEE">
+                        <Label Text="{Binding DescricaoFalha}" FontAttributes="Bold" />
+                        <Label Text="{Binding DataRegistro, StringFormat='Data Registro: {0:dd/MM/yyyy}'}" />
+                        <Label Text="{Binding DataResolucao, StringFormat='Data Resolução: {0:dd/MM/yyyy}'}" />
+                        <Label Text="{Binding SolucaoAplicada}" />
+                        <Label Text="{Binding Observacoes}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

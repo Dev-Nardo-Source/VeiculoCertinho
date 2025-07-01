@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:VeiculoCertinho.ViewModels"
+             xmlns:models="clr-namespace:VeiculoCertinho.Models"
+             x:Class="VeiculoCertinho.Views.ListaUsuariosPage"
+             x:DataType="viewmodels:UsuarioViewModel"
+             Title="Listagem de Usuários">
+    <ContentPage.BindingContext>
+        <viewmodels:UsuarioViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout Padding="10">
+        <Label Text="Usuários Cadastrados" FontAttributes="Bold" FontSize="Medium" />
+        <CollectionView ItemsSource="{Binding Usuarios}" SelectionMode="Single" SelectedItem="{Binding UsuarioSelecionado}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Usuario">
+                    <StackLayout Padding="5" Orientation="Horizontal" Spacing="10">
+                        <Label Text="{Binding Nome}" FontSize="Medium" VerticalOptions="Center" />
+                        <Label Text="{Binding Email}" FontSize="Small" VerticalOptions="Center" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

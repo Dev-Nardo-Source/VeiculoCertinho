@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:VeiculoCertinho.ViewModels"
+             x:Class="VeiculoCertinho.Views.UserRegistrationPage"
+             x:DataType="viewmodels:UsuarioViewModel"
+             Title="Cadastro de Usuário">
+
+    <ContentPage.BindingContext>
+        <viewmodels:UsuarioViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="20" Spacing="15" VerticalOptions="Center">
+        <Entry x:Name="NomeEntry" Placeholder="Nome" Text="{Binding Nome}" />
+        <Label TextColor="Red" IsVisible="{Binding NomeErroVisivel}" Text="{Binding NomeErro}" FontSize="12" />
+        <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email" Text="{Binding Email}" />
+        <Label TextColor="Red" IsVisible="{Binding EmailErroVisivel}" Text="{Binding EmailErro}" FontSize="12" />
+        <Entry x:Name="SenhaEntry" Placeholder="Senha" IsPassword="True" Text="{Binding Senha}" />
+        <Label TextColor="Red" IsVisible="{Binding SenhaErroVisivel}" Text="{Binding SenhaErro}" FontSize="12" />
+        <Entry x:Name="ConfirmarSenhaEntry" Placeholder="Confirmar Senha" IsPassword="True" Text="{Binding ConfirmarSenha}" />
+        <Button Text="Registrar" Command="{Binding RegistrarCommand}" />
+    </StackLayout>
+</ContentPage>
