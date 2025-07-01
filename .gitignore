@@ -20,3 +20,8 @@ generate-coverage-report.ps1
 *.user
 *.userosscache
 *.sln.docstates
+
+# Regras específicas do VeiculoCertinho/.gitignore adicionadas
+/VeiculoCertinho/bin/Debug/net9.0-windows10.0.19041.0/win10-x64/VeiculoCertinho.dll
+/VeiculoCertinho/bin/Debug/net9.0-windows10.0.19041.0/win10-x64/VeiculoCertinho.exe
+/VeiculoCertinho/bin/Debug/net9.0-windows10.0.19041.0/win10-x64/VeiculoCertinho.pdb
