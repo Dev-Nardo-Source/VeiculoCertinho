@@ -66,10 +66,10 @@ namespace VeiculoCertinho.Utils
             // Auto-registrar outros services usando reflection
             var serviceTypes = Assembly.GetExecutingAssembly()
                 .GetTypes()
-                .Where(t => t.IsClass && !t.IsAbstract && 
+                .Where(t => t.IsClass && !t.IsAbstract && !t.IsGenericType &&
                            t.Name.EndsWith("Service") && 
-                           t != typeof(BaseService) && 
-                           t != typeof(VeiculoConsultaServiceSelenium))
+                           t != typeof(VeiculoConsultaServiceSelenium) &&
+                           t != typeof(BaseService))
                 .ToArray();
 
             foreach (var serviceType in serviceTypes)
@@ -161,7 +161,7 @@ namespace VeiculoCertinho.Utils
             }
             catch (Exception ex)
             {
-                var logger = scope.ServiceProvider.GetRequiredService<ILogger<DependencyInjectionExtensions>>();
+                var logger = scope.ServiceProvider.GetRequiredService<ILogger<object>>();
                 logger.LogError(ex, "Erro ao inicializar banco de dados");
                 throw;
             }

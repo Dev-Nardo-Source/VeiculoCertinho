@@ -32,10 +32,7 @@ namespace VeiculoCertinho.ViewModels
         public DocumentoViewModel(DocumentoService service)
         {
             _service = service;
-            _novoDocumento = new Documento
-            {
-                DataRegistro = DateTime.Now
-            };
+            _novoDocumento = new Documento();
 
             RegistrarCommand = new Command(async () => await RegistrarDocumentoAsync());
 
@@ -44,13 +41,12 @@ namespace VeiculoCertinho.ViewModels
 
         private static DocumentoService CreateDefaultDocumentoService()
         {
-            var configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .Build();
-            var repositorio = new VeiculoCertinho.Repositories.DocumentoRepositorio(configuration, new Microsoft.Extensions.Logging.Abstractions.NullLogger<VeiculoCertinho.Repositories.DocumentoRepositorio>());
-            var logger = new Microsoft.Extensions.Logging.Abstractions.NullLogger<DocumentoService>();
-            var service = new DocumentoService(repositorio, logger);
-            return service;
+            var configuration = Microsoft.Maui.Controls.Application.Current?.Handler?.MauiContext?.Services
+                .GetService<IConfiguration>() ?? new ConfigurationBuilder().Build();
+            
+            var logger = Microsoft.Extensions.Logging.Abstractions.NullLogger<DocumentoService>.Instance;
+            
+            return new DocumentoService(configuration, logger);
         }
 
         private async Task CarregarDocumentosAsync()
@@ -69,10 +65,7 @@ namespace VeiculoCertinho.ViewModels
 
             await _service.AdicionarAsync(NovoDocumento);
             Documentos.Add(NovoDocumento);
-            NovoDocumento = new Documento
-            {
-                DataRegistro = DateTime.Now
-            };
+            NovoDocumento = new Documento();
         }
     }
 }

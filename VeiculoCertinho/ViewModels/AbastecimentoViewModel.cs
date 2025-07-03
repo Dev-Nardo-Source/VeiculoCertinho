@@ -515,5 +515,17 @@ namespace VeiculoCertinho.ViewModels
             Abastecimentos
                 .GroupBy(a => a.TipoCombustivel)
                 .ToDictionary(g => g.Key, g => g.Count());
+
+        public async Task InicializarAsync()
+        {
+            await CarregarAbastecimentosAsync();
+            await CarregarVeiculosAsync();
+        }
+
+        public async Task CarregarVeiculosAsync()
+        {
+            // TODO: Implementar lógica de carregamento de veículos
+            await Task.CompletedTask;
+        }
     }
 }

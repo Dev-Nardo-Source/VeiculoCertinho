@@ -15,8 +15,8 @@ namespace VeiculoCertinho.Services
     /// </summary>
     public class DocumentoService : GenericService<Documento, DocumentoRepositorio>
     {
-        public DocumentoService(IConfiguration configuration, ILogger<DocumentoService> logger)
-            : base(new DocumentoRepositorio(configuration, logger), logger)
+        public DocumentoService(IConfiguration configuration, ILogger<DocumentoService>? logger = null)
+            : base(new DocumentoRepositorio(configuration), logger ?? Microsoft.Extensions.Logging.Abstractions.NullLogger<DocumentoService>.Instance)
         {
         }
 

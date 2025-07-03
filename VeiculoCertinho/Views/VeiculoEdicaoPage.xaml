@@ -10,8 +10,8 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:MultiBoolToEnabledConverter x:Key="MultiBoolToEnabledConverter" />
-            <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <!-- Declarado em App.xaml como GenericConverter -->
+            <converters:GenericConverter x:Key="InverseBoolConverter" Type="InverseBool" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -24,9 +24,8 @@
                    MaxLength="17"
                    Text="{Binding Veiculo.Chassi, Mode=TwoWay}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>
@@ -37,9 +36,8 @@
                    MaxLength="7"
                    Text="{Binding Veiculo.Placa, Mode=TwoWay}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>
@@ -72,9 +70,8 @@
                    Placeholder="Marca" 
                    Text="{Binding Veiculo.Marca}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>
@@ -84,9 +81,8 @@
                    Placeholder="Modelo" 
                    Text="{Binding Veiculo.Modelo}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>
@@ -95,11 +91,10 @@
             <Entry x:Name="AnoEntry" 
                    Placeholder="Ano" 
                    Keyboard="Numeric" 
-                   Text="{Binding Veiculo.Ano}">
+                   Text="{Binding Veiculo.AnoFabricacao}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>
@@ -110,9 +105,8 @@
                    Keyboard="Numeric" 
                    Text="{Binding Veiculo.AnoModelo}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>
@@ -122,9 +116,8 @@
                    Placeholder="Cor" 
                    Text="{Binding Veiculo.Cor}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>
@@ -134,9 +127,8 @@
                    Placeholder="Motor" 
                    Text="{Binding Veiculo.Motor}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>
@@ -146,9 +138,8 @@
                    Placeholder="Cilindrada" 
                    Text="{Binding Veiculo.Cilindrada}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>
@@ -158,9 +149,8 @@
                    Placeholder="Potência" 
                    Text="{Binding Veiculo.Potencia}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>
@@ -169,9 +159,8 @@
             <Switch x:Name="ImportadoSwitch" 
                     IsToggled="{Binding Veiculo.Importado}">
                 <Switch.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Switch.IsEnabled>
             </Switch>
@@ -179,11 +168,10 @@
             <Label Text="UF de Origem" />
             <Entry x:Name="UfEntry" 
                    Placeholder="UF de Origem" 
-                   Text="{Binding Veiculo.Uf, Mode=TwoWay}">
+                   Text="{Binding Veiculo.UfOrigem, Mode=TwoWay}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>
@@ -191,11 +179,10 @@
             <Label Text="Município de Origem" />
             <Entry x:Name="MunicipioEntry" 
                    Placeholder="Município de Origem" 
-                   Text="{Binding Veiculo.Municipio, Mode=TwoWay}">
+                   Text="{Binding Veiculo.MunicipioOrigem, Mode=TwoWay}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>
@@ -205,9 +192,8 @@
                    Placeholder="Segmento" 
                    Text="{Binding Veiculo.Segmento}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>
@@ -217,9 +203,8 @@
                    Placeholder="Espécie do Veículo" 
                    Text="{Binding Veiculo.EspecieVeiculo}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>
@@ -230,9 +215,8 @@
                    Keyboard="Numeric" 
                    Text="{Binding Veiculo.Passageiros}">
                 <Entry.IsEnabled>
-                    <MultiBinding Converter="{StaticResource MultiBoolToEnabledConverter}">
+                    <MultiBinding Converter="{StaticResource InverseBoolConverter}">
                         <Binding Path="IsLoading" />
-                        <Binding Path="PreenchidoAutomaticamente" />
                     </MultiBinding>
                 </Entry.IsEnabled>
             </Entry>

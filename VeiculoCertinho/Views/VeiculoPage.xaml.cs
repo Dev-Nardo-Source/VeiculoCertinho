@@ -20,12 +20,6 @@ namespace VeiculoCertinho.Views
         private bool _isConsultaEmAndamento = false;
         private LoadingPopup? _loadingPopup;
 
-        // Remover declarações manuais dos controles para evitar conflito com campos gerados pelo XAML
-        // private Entry? UfOrigemEntry;
-        // private Entry? MunicipioOrigemEntry;
-        // private Entry? UfAtualEntry;
-        // private Entry? MunicipioAtualEntry;
-
         private int _veiculoId;
         public int VeiculoId
         {
@@ -44,13 +38,13 @@ namespace VeiculoCertinho.Views
             _viewModel = viewModel;
             BindingContext = _viewModel;
 
-            // Conectar eventos da placa e chassi com checagem de null para evitar warning
+            // Conectar eventos da placa e chassi
             PlacaEntry.TextChanged += PlacaEntry_TextChanged;
             ChassiEntry.TextChanged += ChassiEntry_TextChanged;
 
             CancelarButton.Clicked += OnCancelarClicked;
 
-            // Inscrever no evento CadastroConcluido para navegação após cadastro
+            // Inscrever no evento CadastroConcluido
             _viewModel.CadastroConcluido += async (s, e) =>
             {
                 var garagemPage = Handler.MauiContext?.Services.GetService<GaragemPage>();
@@ -63,123 +57,83 @@ namespace VeiculoCertinho.Views
                     await DisplayAlert("Erro", "Não foi possível navegar para a página Garagem.", "OK");
                 }
             };
+
+            // Carregar UFs ao inicializar
+            Task.Run(async () => await RecarregarUfsAsync());
         }
 
-        protected override async void OnAppearing()
+        // CORREÇÃO 1: Adicionar método RecarregarUfsAsync
+        private async Task RecarregarUfsAsync()
         {
-            base.OnAppearing();
-            
-            // Recarregar UFs quando a página aparecer
-            await _viewModel.RecarregarUfsAsync();
+            try
+            {
+                await _viewModel.CarregarUfsAsync();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erro", $"Erro ao carregar UFs: {ex.Message}", "OK");
+            }
         }
 
         private async Task CarregarVeiculoAsync(int veiculoId)
         {
+            if (veiculoId <= 0) return;
+
             var veiculo = await _viewModel.ObterVeiculoPorIdAsync(veiculoId);
             if (veiculo != null)
             {
                 _viewModel.Veiculo = veiculo;
-
-                // Atualizar campos do formulário
-                if (PlacaEntry != null)
-                    PlacaEntry.Text = veiculo.Placa;
-                if (ChassiEntry != null)
-                    ChassiEntry.Text = veiculo.Chassi;
-                // Atualização automática via binding
             }
         }
 
-        public new event PropertyChangedEventHandler? PropertyChanged;
-        protected override void OnPropertyChanged([CallerMemberName] string? propertyName = null) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-        private async void ChassiEntry_TextChanged(object? sender, TextChangedEventArgs e)
+        private void PlacaEntry_TextChanged(object? sender, TextChangedEventArgs e)
         {
-            if (ChassiEntry.Text?.Length == 17 && PlacaEntry.Text?.Length == 7)
+            if (!string.IsNullOrEmpty(e.NewTextValue))
             {
-                await TentarConsultarPlaca();
+                PlacaEntry.Text = e.NewTextValue.ToUpper();
             }
         }
 
-        private async void PlacaEntry_TextChanged(object? sender, TextChangedEventArgs e)
+        private void ChassiEntry_TextChanged(object? sender, TextChangedEventArgs e)
         {
-            if (PlacaEntry.Text?.Length == 7 && ChassiEntry.Text?.Length == 17)
+            if (!string.IsNullOrEmpty(e.NewTextValue))
             {
-                var placa = PlacaEntry.Text.ToUpper().Trim();
-
-                // Verificar se veículo já está cadastrado ao completar a placa
-                var veiculoExistente = await _viewModel.ObterVeiculoPorPlacaAsync(placa);
-                if (veiculoExistente != null)
-                {
-                    await DisplayAlert("Alerta", "Veículo já cadastrado.", "OK");
-                    LimparFormulario();
-                    return;
-                }
-
-                await TentarConsultarPlaca();
+                ChassiEntry.Text = e.NewTextValue.ToUpper();
             }
-        }
-
-        private bool ValidarPlacaMercosul(string placa)
-        {
-            if (string.IsNullOrWhiteSpace(placa) || placa.Length != 7)
-                return false;
-
-            return char.IsLetter(placa[0]) &&
-                   char.IsLetter(placa[1]) &&
-                   char.IsLetter(placa[2]) &&
-                   char.IsDigit(placa[3]) &&
-                   char.IsLetter(placa[4]) &&
-                   char.IsDigit(placa[5]) &&
-                   char.IsDigit(placa[6]);
-        }
-
-        private bool ValidarPlacaTradicional(string placa)
-        {
-            if (string.IsNullOrWhiteSpace(placa) || placa.Length != 7)
-                return false;
-
-            return char.IsLetter(placa[0]) &&
-                   char.IsLetter(placa[1]) &&
-                   char.IsLetter(placa[2]) &&
-                   char.IsDigit(placa[3]) &&
-                   char.IsDigit(placa[4]) &&
-                   char.IsDigit(placa[5]) &&
-                   char.IsDigit(placa[6]);
         }
 
         private bool ValidarPlaca(string placa)
         {
-            if (string.IsNullOrWhiteSpace(placa))
+            if (string.IsNullOrWhiteSpace(placa) || placa.Length < 7)
                 return false;
 
-            placa = placa.Trim().ToUpper();
-            return ValidarPlacaMercosul(placa) || ValidarPlacaTradicional(placa);
-        }
-
-        private async Task TentarConsultarPlaca()
-        {
-            if (_isConsultaEmAndamento)
-                return;
-
-            // Verificar se placa e chassi estão preenchidos corretamente antes de consultar
-            if (string.IsNullOrWhiteSpace(PlacaEntry.Text) || PlacaEntry.Text.Length != 7)
+            // Validação Mercosul (AAA9A99)
+            if (placa.Length == 7 && char.IsLetter(placa[4]))
             {
-                return;
+                return placa.Take(3).All(char.IsLetter) &&
+                       char.IsDigit(placa[3]) &&
+                       char.IsLetter(placa[4]) &&
+                       placa.Skip(5).All(char.IsDigit);
             }
 
-            if (string.IsNullOrWhiteSpace(ChassiEntry.Text) || ChassiEntry.Text.Length != 17)
+            // Validação tradicional (AAA9999)
+            return placa.Take(3).All(char.IsLetter) && placa.Skip(3).All(char.IsDigit);
+        }
+
+        private async void OnConsultarPlacaClicked(object sender, EventArgs e)
+        {
+            if (_isConsultaEmAndamento)
             {
+                await DisplayAlert("Aguarde", "Consulta em andamento. Por favor, aguarde.", "OK");
                 return;
             }
 
             try
             {
                 _isConsultaEmAndamento = true;
-                _loadingPopup = new LoadingPopup("Aguarde...!!!");
+                _loadingPopup = new LoadingPopup();
                 await MopupService.Instance.PushAsync(_loadingPopup);
 
-                // Forçar texto em maiúsculo
                 PlacaEntry.Text = PlacaEntry.Text.ToUpper().Trim();
                 var placa = PlacaEntry.Text;
 
@@ -190,7 +144,6 @@ namespace VeiculoCertinho.Views
                     return;
                 }
 
-                // Verificar se veículo já está cadastrado
                 var veiculoExistente = await _viewModel.ObterVeiculoPorPlacaAsync(placa);
                 if (veiculoExistente != null)
                 {
@@ -204,11 +157,8 @@ namespace VeiculoCertinho.Views
                 
                 if (encontrado)
                 {
-                    // Atualizar o ViewModel para refletir no binding e atualizar a UI automaticamente
-                    _viewModel.Veiculo = _viewModel.Veiculo; // Forçar notificação de propriedade se necessário
-
-                    // Remover referências diretas aos controles para evitar erros de compilação
-                    // A atualização da UI será feita via binding no XAML
+                    // Forçar atualização da UI via binding
+                    _viewModel.Veiculo = _viewModel.Veiculo;
                 }
             }
             catch (Exception ex)
@@ -245,38 +195,15 @@ namespace VeiculoCertinho.Views
             {
                 var veiculo = CriarVeiculoDoFormulario();
                 _viewModel.Veiculo = veiculo;
+                
+                // CORREÇÃO 2: Chamar método público CadastrarVeiculoAsync
                 await _viewModel.CadastrarVeiculoAsync();
-                
-                // Exibir mensagem de sucesso
-                // await DisplayAlert("Sucesso", "Veículo cadastrado com sucesso!", "OK");
-                
-                // Navegar para a tela Garagem
-                if (Handler != null && Handler.MauiContext != null)
-                {
-                    var garagemPage = Handler.MauiContext.Services.GetService<GaragemPage>();
-                    if (garagemPage != null)
-                    {
-                        await Navigation.PushAsync(garagemPage);
-                    }
-                    else
-                    {
-                        await DisplayAlert("Erro", "Não foi possível navegar para a página Garagem.", "OK");
-                    }
-                }
-                else
-                {
-                    await DisplayAlert("Erro", "Contexto MauiContext ou Handler está nulo.", "OK");
-                }
-            }
-            else
-            {
-                await DisplayAlert("Erro", "Contexto MauiContext ou Services está nulo.", "OK");
             }
         }
 
         private async Task<bool> ValidarCamposObrigatorios()
         {
-            if (string.IsNullOrWhiteSpace(_viewModel.Veiculo.Placa))
+            if (string.IsNullOrWhiteSpace(PlacaEntry.Text))
             {
                 await DisplayAlert("Erro", "Por favor, preencha a placa do veículo.", "OK");
                 return false;

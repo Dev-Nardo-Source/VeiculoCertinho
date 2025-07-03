@@ -11,10 +11,11 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
-            <converters:NullToBoolConverter x:Key="NullToBoolConverter" />
-            <converters:NotNullConverter x:Key="NotNullConverter" />
-            <converters:ListContainsConverter x:Key="ListContainsConverter" />
+            <converters:GenericConverter x:Key="InverseBoolConverter" Type="InverseBool" />
+            <converters:GenericConverter x:Key="NullToBoolConverter" Type="NullToBool" />
+            <converters:GenericConverter x:Key="NotNullConverter" Type="NotNull" />
+            <converters:GenericConverter x:Key="ListContainsConverter" Type="ListContains" />
+            <converters:GenericConverter x:Key="MultiBoolToEnabledConverter" Type="MultiBoolToEnabled" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

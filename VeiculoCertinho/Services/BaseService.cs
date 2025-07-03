@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Linq;
 
 namespace VeiculoCertinho.Services
 {
@@ -272,9 +273,9 @@ namespace VeiculoCertinho.Services
             for (int i = 0; i < itemList.Count; i += batchSize)
             {
                 var batch = itemList.Skip(i).Take(batchSize);
-                var batchOperations = batch.Select(item => () => processor(item));
+                var batchOperations = System.Linq.Enumerable.Select(batch.ToList(), item => (Func<Task<TResult>>)(() => processor(item)));
                 
-                var batchResults = await ExecuteBatchAsync(batchOperations, maxConcurrency, 
+                var batchResults = await ExecuteBatchAsync<TResult>(batchOperations, maxConcurrency, 
                     $"{operationName} - Batch {i / batchSize + 1}", cancellationToken);
                     
                 results.AddRange(batchResults);

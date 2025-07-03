@@ -6,7 +6,7 @@
              Title="Integração Órgãos Oficiais">
 
     <ContentPage.BindingContext>
-        <viewmodels:IntegracaoOrgaosViewModel />
+        <viewmodels:IntegracaoViewModel />
     </ContentPage.BindingContext>
 
     <StackLayout Padding="10" Spacing="15">

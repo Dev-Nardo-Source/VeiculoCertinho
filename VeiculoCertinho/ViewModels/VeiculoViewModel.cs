@@ -318,7 +318,7 @@ namespace VeiculoCertinho.ViewModels
                 ShowSuccess("Dados do veículo carregados com sucesso!");
 
                 return true;
-            }, "Consultando placa...") ?? false;
+            }, "Consultando placa...");
         }
 
         private async Task SalvarVeiculoAsync()
@@ -350,7 +350,7 @@ namespace VeiculoCertinho.ViewModels
             }
         }
 
-        private async Task CadastrarVeiculoAsync()
+        public async Task CadastrarVeiculoAsync()
         {
             await SalvarVeiculoAsync();
         }
@@ -452,7 +452,7 @@ namespace VeiculoCertinho.ViewModels
             }
         }
 
-        private async Task CarregarUfsAsync()
+        public async Task CarregarUfsAsync()
         {
             var ufs = await ExecuteWithLoadingAsync(async () =>
             {

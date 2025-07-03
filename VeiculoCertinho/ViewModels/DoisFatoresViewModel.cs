@@ -127,7 +127,7 @@ namespace VeiculoCertinho.ViewModels
                 "Validando código..."
             );
 
-            CodigoValido = resultado ?? false;
+            CodigoValido = resultado;
 
             if (CodigoValido)
             {

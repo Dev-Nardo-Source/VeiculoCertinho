@@ -127,14 +127,9 @@ namespace VeiculoCertinho.Services
             // Preferências otimizadas
             var prefs = new Dictionary<string, object>
             {
-                ["credentials_enable_service"] = false,
-                ["profile.password_manager_enabled"] = false,
-                ["profile.default_content_setting_values.notifications"] = 2,
-                ["profile.managed_default_content_settings.images"] = 1,
-                ["profile.default_content_settings.popups"] = 0,
-                ["download.prompt_for_download"] = false
+                ["profile.default_content_setting_values.notifications"] = 2
             };
-            options.AddUserProfilePreferences(prefs);
+            options.AddAdditionalOption("prefs", prefs);
 
             return new ChromeDriver(options);
         }

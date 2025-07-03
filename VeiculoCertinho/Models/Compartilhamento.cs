@@ -111,6 +111,11 @@ namespace VeiculoCertinho.Models
         }
 
         /// <summary>
+        /// Email do usuário.
+        /// </summary>
+        public string EmailUsuario { get; set; } = string.Empty;
+
+        /// <summary>
         /// Representação string do compartilhamento.
         /// </summary>
         public override string ToString()
